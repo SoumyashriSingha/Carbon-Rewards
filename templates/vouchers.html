@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <meta name="viewport" content=
+            "width=device-width, initial-scale=1" />
+            <title>Rewards</title>
+            <link rel="stylesheet" href="static/vouchers.css">
+        <script src=
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+        </script>
+    </head>
+
+    <body>
+        <div class="row">
+        <div class="column">
+            <div class="card">
+              <div class="main">
+                <div class="co-img">
+                  <img src="https://th.bing.com/th/id/OIP.19AkUjrOFVX31Kh6_40SnQAAAA?pid=ImgDet&rs=1" alt="" />
+                </div>
+                <div class="vertical"></div>
+                <div class="content">
+                  <h2>McLarens Lubricants</h2>
+                  <h1>10% <span>Coupon</span></h1>
+                  <p>Valid till 30 June 2023</p>
+                </div>
+              </div>
+              <div class="copy-button">
+                <input id="copyvalue" type="text" readonly value="GOFREE" />
+                <button onclick="copyIt()" class="copybtn">COPY</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <div class="main">
+                <div class="co-img">
+                  <img src="https://th.bing.com/th/id/OIP.DZeJtQUoao69cuE-AdZ_dAHaHa?pid=ImgDet&rs=1" alt="" />
+                </div>
+                <div class="vertical"></div>
+                <div class="content">
+                  <h2>Wash Mitts</h2>
+                  <h1>30% <span>Coupon</span></h1>
+                  <p>Valid till 20 June 2023</p>
+                </div>
+              </div>
+              <div class="copy-button">
+                <input id="copyvalue" type="text" readonly value="DISCOUNT12" />
+                <button onclick="copyIt()" class="copybtn">COPY</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <div class="main">
+                <div class="co-img">
+                  <img src="https://th.bing.com/th/id/R.62009eb7f8311801bff31d6da653c1a9?rik=yo%2fb8m3utuo7Ww&pid=ImgRaw&r=0" alt="" />
+                </div>
+                <div class="vertical"></div>
+                <div class="content">
+                  <h2>Car Wash Foam</h2>
+                  <h1>12% <span>Coupon</span></h1>
+                  <p>Valid till 30 May 2023</p>
+                </div>
+              </div>
+              <div class="copy-button">
+                <input id="copyvalue" type="text" readonly value="GIFTZS" />
+                <button onclick="copyIt()" class="copybtn">COPY</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <div class="main">
+                <div class="co-img">
+                  <img src="https://2ecffd01e1ab3e9383f0-07db7b9624bbdf022e3b5395236d5cf8.ssl.cf4.rackcdn.com/Product-800x800/b7591097-2a05-4f89-b395-f653ae899e8a.jpg" alt="" />
+                </div>
+                <div class="vertical"></div>
+                <div class="content">
+                  <h2>Car Body Polish</h2>
+                  <h1>15% <span>Coupon</span></h1>
+                  <p>Valid till 22 May 2023</p>
+                </div>
+              </div>
+              <div class="copy-button">
+                <input id="copyvalue" type="text" readonly value="POLISH34" />
+                <button onclick="copyIt()" class="copybtn">COPY</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+          
+          
+          <script>
+            let copybtn = document.querySelector(".copybtn");
+
+
+            function copyIt(){
+            let copyInput = document.querySelector('#copyvalue');
+
+            copyInput.select();
+
+            document.execCommand("copy");
+
+            copybtn.textContent = "COPIED";
+            }
+
+          </script>
+
+    </body>
+</html>

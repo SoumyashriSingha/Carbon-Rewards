@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CARBON REWARDS</title>
+  <!--link rel="stylesheet" href="static/dash.css"-->
+  <link href="{{url_for('static', filename = 'dash.css')}}" rel="stylesheet">
+  <!--link rel="stylesheet" href="{{ url_for('static', filename='vouchers.css') }}"-->
+  <!-- box icon -->
+  
+</head>
+<body>
+  
+
+<div class="grid">
+    <header class="header">
+      <i class="fas fa-bars header__menu"></i>
+      <div class="header__search">
+        <input class="header__input" />
+        
+        <h2>Carbon Rewards Dashboard</h2>
+      </div>
+      <div class="header__avatar">
+        <div class="dropdown">
+           <button class="dropbtn">
+            <span>Menu</span>
+            <span class="icon">&#9759;</span>
+          </button>
+        <div class="dropdown-content mar-t-1">
+        <a href="{{ url_for('profile')}}">Profile</a>
+        <a href="#">Settings</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+      </div>
+    </div>
+      </div>
+    </header>
+  
+    
+  
+    <main class="main">
+      <div class="main-header">
+        <div class="main-header__intro-wrapper">
+          <div class="main-header__welcome">
+            
+            <div class="main-header__welcome-subtitle text-light">Welcome {{ current_user.username }}!</div>
+            <!--p>Hello {{ name }}!</p--></br>
+            <div class="main-header__welcome-title text-light"><strong>Today's fact</strong></div>
+            <div class="main-header__welcome-subtitle text-light"><strong>A child born today might not breathe clean air until they are 8</strong></div>
+          </div>
+          <div class="quickview">
+            <div class="quickview__item">
+              <div class="quickview__item-total">
+                <span style='font-size:30px;'>&#9925;</span>
+              </div>
+              <div class="quickview__item-description">
+                <i class="far fa-comment"></i>
+                <span class="text-light">Weather</span>
+              </div>
+            </div>
+            <div class="quickview__item">
+              <div class="quickview__item-total">27&deg;</div>
+              <div class="quickview__item-description">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="text-light">Pune</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-overview">
+        <div class="overviewCard">
+          <div class="overviewCard-icon overviewCard-icon--document">
+             <i class="far fa-file-alt">&#128175;</i>
+          </div>
+          
+          <div class="overviewCard-description">
+           
+            <h3 class="overviewCard-title text-light">Your Score</h3>
+            
+            
+            
+            {% for item in items %}
+            
+            <p class="overviewCard-subtitle">{{ item[0] }} pts</p>
+            {% endfor %}
+           
+          </div>
+         
+        </div>
+        <div class="overviewCard">
+          <div class="overviewCard-icon overviewCard-icon--calendar">
+             <i class="far fa-calendar-check">&#127942;</i>
+          </div>
+          <div class="overviewCard-description">
+            <h3 class="overviewCard-title text-light">Your Rewards</h3>
+            <p class="overviewCard-subtitle">
+              <a href="{{ url_for('index_func') }}"><button>Check out</button></a></p>
+          </div>
+        </div>
+        <div class="overviewCard">
+          <div class="overviewCard-icon overviewCard-icon--mail">
+             <i class="far fa-envelope">&#128173;</i>
+          </div>
+          <div class="overviewCard-description">
+            <h3 class="overviewCard-title text-light">Your Footprint </h3>
+            {% for item in items %}
+            <p class="overviewCard-subtitle">{{item[1]}} g/kg</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="overviewCard">
+          <div class="overviewCard-icon overviewCard-icon--photo">
+             <i class="far fa-file-image">&#128203;</i>
+          </div>
+          <div class="overviewCard-description">
+            <h3 class="overviewCard-title text-light">Suggestions </h3>
+            <!-- Trigger/Open The Modal -->
+                <button id="myBtn">Show</button>
+                
+                </div>
+          </div>
+        </div>
+        
+        <div class="card card--finance">
+            <div class="card__header">
+              <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+              <div class="card__header-title text-light text-align:center"style="text-align: center;"> <strong>Graph</strong> 
+                <a href="{{ url_for('live') }}"><style>
+                  .button1 {
+                    border: none;
+                    color: white;
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    text-align: center;  
+                    display: inline-block;
+                    font-size: 16px;
+                    margin: 4px 2px;
+                    cursor: pointer;
+                    background-color: white;
+                    color: black;
+                    border: 2px solid #aedec6;
+                  }
+                  .button1:hover {
+                    background-color: #aedec6;
+                    color: white;
+                  }
+                  </style>
+                  <button class="button button1"> View Real-Time</button></a>
+              </div>
+            </div>
+            <div id="chartdiv">
+              <div id="myPlot" style="width:100%;max-width:1200px;height:100%;max-height:1800px">
+              </div>
+              
+              <script>
+                var xArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,
+              21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50];
+                var yArray = [0.82,0.73,0.4,0.59,0.53,0.4,0.5,0.43,
+              2,57.33,0.64,50.74,10.23,0.7,32.66,
+              3.5,3,0.37,3.5,1.21,0.67,3.5,0.56,0.67,
+              20.22,57.33,0.46,0.4,49.01,0.7,23.66,
+              0.14,0.4,57.33,0.4,49.01,57.33,0.7,23.66,
+              0.5,1.83,0.1,0.5,0.11,14.66,2,3.5,0.65,0.4,56.12,0.56];
+
+                // Define Data
+                var data = [{
+                  x: xArray,
+                  y: yArray,
+                  mode: "lines",
+                  type: "scatter"
+                }];
+
+                // Define Layout
+                var layout = {
+                  xaxis: {range: [1,37], title: "days"},
+                  yaxis: {range: [0, 60], title: "CO2 value in g/kg"},
+                  title: "CO2 emission vs days"
+                };
+
+                // Display using Plotly
+                Plotly.newPlot("myPlot", data, layout);
+              </script>
+            </div>
+          </div>
+      </div> <!-- /.main-cards -->
+      
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>1. How can I reduce my car's emissions?</p>
+          <ul>
+            <li>Maintain your engine</li>
+            <li>Check your catalytic converter</li>
+            <li>Use better fuel</li>
+            <li>Change your engine oil and use right one</li>
+            <li>Turn of AC at high terrains</li>
+          </ul>
+          <p>2. How are points assigned?</p>
+          <ul>
+            <li>If monthly emission exceeds threshold (1.5g/kg) your points are deducted and if it is less then you get some added points as well.</li>
+
+          </ul>
+          <p>3. Where are these points useful?</p>
+          <ul>
+            <li>discounts and coupons in automotive purchases can be redeemed.</li>
+          </ul>
+        </div>
+        <style>
+          body {font-family: Arial, Helvetica, sans-serif;}
+          
+          /* The Modal (background) */
+          .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+          }
+          
+          /* Modal Content */
+          .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+          }
+          
+          /* The Close Button */
+          .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+          }
+          
+          .close:hover,
+          .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+          }
+          </style>
+      <script>
+        var modal = document.getElementById("myModal");
+
+         // Get the button that opens the modal
+         var btn = document.getElementById("myBtn");
+
+         // Get the <span> element that closes the modal
+         var span = document.getElementsByClassName("close")[0];
+
+         // When the user clicks on the button, open the modal
+         btn.onclick = function() {
+           modal.style.display = "block";
+         }
+
+         // When the user clicks on <span> (x), close the modal
+         span.onclick = function() {
+           modal.style.display = "none";
+         }
+
+         // When the user clicks anywhere outside of the modal, close it
+         window.onclick = function(event) {
+           if (event.target == modal) {
+             modal.style.display = "none";
+           }
+         }
+     </script>
+    </main>
+  </div>
+</body>

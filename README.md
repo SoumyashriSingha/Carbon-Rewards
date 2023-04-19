@@ -15,6 +15,7 @@ cd Carbon-Rewards
 https://python.land/virtual-environments/virtualenv (Follow this link for creating virtual environment)
 
 ### 3. Then in terminal run:
+```
 pip install -r requirements.txt
 ```
 ### 4 .Migrate/Create a database

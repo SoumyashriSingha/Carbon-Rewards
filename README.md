@@ -1,4 +1,4 @@
-# Carbon Rewards WEb Application
+# Carbon Rewards Web Application
 
 ## Set up & Installation.
 

@@ -109,12 +109,7 @@ def background_thread():
         socketio.emit('updateSensorData', {'value': dummy_sensor_value, "date": get_current_datetime()})
         socketio.sleep(1)
 
-"""
-Serve root index file
-"""
-@app.route('/live_graph')
-def live():
-    return render_template('app.html')
+
 
 """
 Decorator for connect

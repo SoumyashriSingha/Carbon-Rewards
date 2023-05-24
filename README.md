@@ -29,7 +29,17 @@ pip install -r requirements.txt
 python routes.py
 open localhost:5000
 ```
+**For Raspberry pi**
+```
+Open terminal inside Carbon-Rewards-main
 
+Run the following commands:
+source venv/bin/activate
+cd venv
+sudo python3 routes1.py
+
+Open localhost:5000
+```
 
 
 
